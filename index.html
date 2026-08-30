@@ -547,6 +547,15 @@ footer{margin-top:54px;padding-top:26px;border-top:1px solid var(--line);display
   var tabs=[].slice.call(document.querySelectorAll('.tab'));
   var panels=[].slice.call(document.querySelectorAll('.panel'));
   var counted=false;
+  var LANG='es';
+  var TITLES={
+    inicio:{es:'Inicio',en:'Home'},
+    experiencia:{es:'Experiencia',en:'Experience'},
+    estudios:{es:'Estudios',en:'Education'},
+    certificaciones:{es:'Certificaciones',en:'Certifications'},
+    proyectos:{es:'Proyectos',en:'Projects'},
+    contacto:{es:'Contacto',en:'Contact'}
+  };
 
   function runCounters(scope){
     if(counted) return; counted=true;
@@ -584,6 +593,8 @@ footer{margin-top:54px;padding-top:26px;border-top:1px solid var(--line);display
       if(on&&focusTab)t.focus();
     });
     if(id==='inicio'){var p=document.getElementById('p-inicio');runCounters(p);}
+    var t=TITLES[id];
+    if(t) document.title=(t[LANG]||t.es)+' / Kapri';
     try{history.replaceState(null,'','#'+id);}catch(e){}
   }
 
@@ -657,7 +668,6 @@ footer{margin-top:54px;padding-top:26px;border-top:1px solid var(--line);display
   window.addEventListener('resize',hideTip);
 
   // ---------- i18n ----------
-  var LANG='es';
   var FLAG={es:'🇲🇽',en:'🇺🇸'};
   var COPY={es:{copy:'Copiar',done:'Copiado ✓'},en:{copy:'Copy',done:'Copied ✓'}};
   var btn=document.getElementById('langBtn');
@@ -677,6 +687,8 @@ footer{margin-top:54px;padding-top:26px;border-top:1px solid var(--line);display
     var cpb=document.getElementById('copyMail');
     if(cpb && !cpb.dataset.busy) cpb.textContent=COPY[l].copy;
     if(tipEl) tipD.textContent=tipEl.getAttribute('data-tip-'+l)||'';
+    var activeTab=tabs.filter(function(t){return t.getAttribute('aria-selected')==='true';})[0];
+    if(activeTab){var t=TITLES[activeTab.dataset.tab];if(t)document.title=(t[l]||t.es)+' / Kapri';}
     try{localStorage.setItem('kapri-lang',l);}catch(e){}
   }
   function closeMenu(){menu.hidden=true;btn.setAttribute('aria-expanded','false');}
