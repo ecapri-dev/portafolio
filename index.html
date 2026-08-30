@@ -14,7 +14,7 @@
   --surface:#131316; --surface2:#17171b; --inset:#0f0f12;
   --line:#242429; --line2:#2e2e35;
   --text:#e9e9ec; --muted:#7b7b84; --muted2:#55555e;
-  --bright:#ffffff; --ok:#3ad07a;
+  --bright:#ffffff; --ok:#3ad07a; --busy:#e5484d;
   --serif:'Bricolage Grotesque',system-ui,sans-serif;
   --sans:'Hanken Grotesk',system-ui,sans-serif;
   --mono:'JetBrains Mono',ui-monospace,monospace;
@@ -192,6 +192,7 @@ main{margin-top:26px;}
 .flag-t{font-family:var(--serif);font-weight:700;font-size:22px;color:var(--bright);}
 .flag-s{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:7px;line-height:1.5;}
 .now-dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok);animation:pulse 2.4s infinite;}
+.now-dot.busy{background:var(--busy);box-shadow:0 0 10px var(--busy);}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 /* marquee */
 .mq-card{padding:16px 0;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);}
@@ -347,7 +348,7 @@ footer{margin-top:54px;padding-top:26px;border-top:1px solid var(--line);display
   <div class="hexrow"><div class="hex"><span class="wm">S</span><span>Sophos MSP</span></div><div class="hex"><svg class="blogo" viewBox="0 0 24 24" aria-hidden="true"><path d="m22.5106 6.4566.0008-.0123a.888.888 0 0 0-.2717-.6384c-.0084-.0084-.018-.0155-.0267-.0235-.0186-.0166-.0371-.0333-.0572-.0484-.0193-.0147-.04-.0276-.0607-.0406-.0096-.006-.0182-.0131-.0281-.0188L12.4576.1266a.891.891 0 0 0-.9223.0043L1.933 5.6744c-.0107.0062-.0203.014-.0307.0205-.0073.0047-.015.008-.0223.0128-.007.0047-.013.0106-.02.0155a.8769.8769 0 0 0-.147.1333l-.0026.003a.8872.8872 0 0 0-.2218.5847l.0009.014c-.0002.0088-.0015.0176-.0015.0264v11.0708c0 .3277.1802.6288.469.7836l9.5986 5.5417c.0076.0044.0158.0075.0236.0117a.8754.8754 0 0 0 .166.0687c.0134.004.0266.0083.0401.0117a.8793.8793 0 0 0 .072.0142c.0117.0019.0232.0045.0349.006a.835.835 0 0 0 .2157 0c.0117-.0015.0232-.0041.0348-.006a.9.9 0 0 0 .072-.0142c.0135-.0034.0267-.0077.04-.0117a.895.895 0 0 0 .0646-.0217.9134.9134 0 0 0 .1015-.047c.0078-.0042.016-.0072.0236-.0117l9.5986-5.5417a.8888.8888 0 0 0 .469-.7836V6.4779c0-.0071-.0012-.0142-.0014-.0213zM5.2543 6.0822l6.5367-3.774a.4182.4182 0 0 1 .4182 0l6.5366 3.774a.4182.4182 0 0 1 0 .7243l-6.5367 3.774a.4182.4182 0 0 1-.4182 0l-6.5366-3.774a.4182.4182 0 0 1 0-.7243zm5.6134 14.3449a.4172.4172 0 0 1-.626.3613L3.718 17.0218a.4173.4173 0 0 1-.2086-.3613V9.1279a.4172.4172 0 0 1 .6258-.3613l6.524 3.7666a.4172.4172 0 0 1 .2086.3614v7.5325zm9.623-3.7666a.4173.4173 0 0 1-.2086.3613l-6.5239 3.7666a.4172.4172 0 0 1-.6259-.3613v-7.5325c0-.149.0796-.2868.2087-.3614l6.5239-3.7666a.4172.4172 0 0 1 .6258.3613v7.5326z" style="fill:#9FEF00"/></svg><span>Hack The Box</span></div><div class="hex"><svg class="blogo" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z" style="fill:#4285F4"/></svg><span>Google Workspace</span></div></div>
 </div>
 <div class="card anim sp3 b-now" style="--i:1">
-  <div class="b-head"><span class="eyeb"><span class="now-dot"></span> <span data-es="Ahora mismo" data-en="Right now">Ahora mismo</span></span>
+  <div class="b-head"><span class="eyeb"><span class="now-dot"></span> <span data-es="Trabajando en" data-en="Currently working on">Trabajando en</span></span>
   <button class="golink" data-goto="experiencia"><span data-es="Experiencia →" data-en="Experience →">Experiencia →</span></button></div>
   <div class="mini-list">
     <div class="mini"><span class="mn">01</span><div>
@@ -480,9 +481,9 @@ footer{margin-top:54px;padding-top:26px;border-top:1px solid var(--line);display
   <span class="act">GMT-6</span>
 </div>
 <div class="card anim ct" style="--i:4;grid-column:1/-1">
-  <span class="rc-ico"><span class="now-dot"></span></span>
+  <span class="rc-ico"><span class="now-dot busy"></span></span>
   <div><div class="ct-l"><span data-es="Disponibilidad" data-en="Availability">Disponibilidad</span></div>
-  <div class="ct-v"><span data-es="Prácticas o rol junior en seguridad ofensiva / SOC (Blue Team)" data-en="Internship or junior role in offensive security / SOC (Blue Team)">Prácticas o rol junior en seguridad ofensiva / SOC (Blue Team)</span></div></div>
+  <div class="ct-v"><span data-es="Actualmente en TGK México · Abierto a oportunidades a futuro" data-en="Currently at TGK México · Open to future opportunities">Actualmente en TGK México · Abierto a oportunidades a futuro</span></div></div>
 </div>
 </div>
     </section>
